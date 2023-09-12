@@ -66,16 +66,32 @@ function SnailCycle(array, steps, cycle = 0, res = []) {
     if (steps > 0) {
         cycle++
         res.push(MoveVertically(array, cycle, array.length - cycle, cycle))
+        cycle++
+        res.push(MoveVertically(array, cycle, array.length - cycle, cycle))
         steps--
-    } 
-    if (steps > 0){
+    }
+    if (steps > 0) {
         return SnailCycle(array, steps, cycle, res)
-    } else{
+    } else {
         return res
     }
 }
 
-//console.log(Snail([[1, 2, 3], [8, 9, 4], [7, 6, 5]]))
+
+function Rotate2dArray(array2d) {
+    result = []
+    for (let index = array2d[0].length; index >= 0; index--) {
+        var verticalSlice = []
+        for (let index1 = 0; index1 < array2d.length; index1++) {
+            const element = array2d[index1][index];
+            verticalSlice.push(element)
+        }
+        result.push(verticalSlice)
+    }
+    return result
+}
+
+console.log(Rotate2dArray([[1, 2, 3], [8, 9, 4], [7, 6, 5]]))
 
 
 function AnagramDifference(firstWord, secondWord) {
@@ -89,11 +105,11 @@ function AnagramDifference(firstWord, secondWord) {
     var res = 0
     for (let index = 0; index < array.length; index++) {
         const element = array[index];
-        if (element == 1){
+        if (element == 1) {
             res++
-        } 
+        }
     }
     return res
 }
 
-console.log(AnagramDifference("codewars", "hackerrank"))
+//console.log(AnagramDifference("codewars", "hackerrank"))
