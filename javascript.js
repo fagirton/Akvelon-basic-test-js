@@ -14,7 +14,6 @@ function NestedMap(map, path = "", res = []) {
             }
         }
     }
-
 }
 
 var input = {
@@ -30,7 +29,7 @@ var input = {
 
 function MoveHorisontally(array, offsetStart, offsetEnd, i) {
     var res = []
-    for (let index = offsetStart; index < array[i].length - offsetEnd; index++) {
+    for (let index = offsetStart; index < offsetEnd; index++) {
         const element = array[i][index];
         res.push(element)
     }
@@ -39,7 +38,7 @@ function MoveHorisontally(array, offsetStart, offsetEnd, i) {
 
 function MoveVertically(array2d, offsetStart, offsetEnd, i) {
     var res = []
-    for (let index = offsetStart; index < array2d.length - offsetEnd; index++) {
+    for (let index = offsetStart; index < offsetEnd; index++) {
         const element = array2d[index][i];
         res.push(element)
     }
@@ -48,32 +47,53 @@ function MoveVertically(array2d, offsetStart, offsetEnd, i) {
 
 function Snail(array) {
     var steps = (array.length - 1) * 2 + 1
-    SnailCycle
+    SnailCycle(array, steps)
 }
 
-function SnailCycle(array, steps, cycle = 0, result = []) {
+function SnailCycle(array, steps, cycle = 0, res = []) {
     if (steps > 0) {
-        MoveHorisontally(array, cycle, array.length - cycle, cycle)
+        res.push(MoveHorisontally(array, cycle, array.length - cycle, cycle))
         steps--
     }
     if (steps > 0) {
-        MoveVertically(array, cycle, array.length - cycle, cycle)
+        res.push(MoveVertically(array, array.length - cycle, cycle, cycle))
         steps--
     }
     if (steps > 0) {
-        MoveHorisontally(array, cycle, array.length - cycle, cycle)
+        res.push(MoveHorisontally(array, array.length - cycle, cycle, cycle))
         steps--
     }
     if (steps > 0) {
-        MoveVertically(array, cycle, array.length - cycle, cycle)
+        cycle++
+        res.push(MoveVertically(array, cycle, array.length - cycle, cycle))
         steps--
     } 
     if (steps > 0){
-        SnailCycle()
-    }
-    else{
-        return result
+        return SnailCycle(array, steps, cycle, res)
+    } else{
+        return res
     }
 }
 
-console.log(Snail([[1, 2, 3], [8, 9, 4], [7, 6, 5]]))
+//console.log(Snail([[1, 2, 3], [8, 9, 4], [7, 6, 5]]))
+
+
+function AnagramDifference(firstWord, secondWord) {
+    var array
+    for (let index = 0; index < firstWord.length; index++) {
+        array[firstWord[index]] = 1
+    }
+    for (let index = 0; index < secondWord.length; index++) {
+        array[secondWord[index]]++
+    }
+    var res = 0
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element == 1){
+            res++
+        } 
+    }
+    return res
+}
+
+console.log(AnagramDifference("codewars", "hackerrank"))

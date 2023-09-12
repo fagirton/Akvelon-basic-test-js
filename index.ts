@@ -116,6 +116,23 @@ function ArrayDeepCount(array: Array<any>, count: number = 0): number {
     return count
 }
 
+function AnagramDifference(firstWord: string, secondWord: string) {
+    var array
+    for (let index = 0; index < firstWord.length; index++) {
+        array[firstWord[index]] = 1
+    }
+    for (let index = 0; index < secondWord.length; index++) {
+        array[secondWord[index]]++
+    }
+    var res = 0
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element == 1){
+            res++
+        } 
+    }
+    return res
+}
 
 // function Permutations(str: string) {
 //     var array = [];
@@ -185,5 +202,6 @@ function ArrayDeepCount(array: Array<any>, count: number = 0): number {
 //console.log(DigitalRoot(16))
 //console.log(Tower(6))
 //console.log(ArrayDeepCount(["x", ["y"], ["z"]]))
+console.log(AnagramDifference("codewars", "hackerrank"))
 
 
