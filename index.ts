@@ -116,6 +116,7 @@ function ArrayDeepCount(array: Array<any>, count: number = 0): number {
     return count
 }
 
+
 // function Permutations(str: string) {
 //     var array = [];
 //     for (let index = 0; index < str.length; index++) {
