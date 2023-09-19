@@ -117,7 +117,7 @@ function ArrayDeepCount(array: Array<any>, count: number = 0): number {
 }
 
 function AnagramDifference(firstWord: string, secondWord: string) {
-    var array
+    var array = <any>Object;
     for (let index = 0; index < firstWord.length; index++) {
         array[firstWord[index]] = 1
     }

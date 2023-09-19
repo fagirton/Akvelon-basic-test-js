@@ -79,7 +79,21 @@ function SnailCycle(array, steps, cycle = 0, res = []) {
     }
 }
 
-console.log(MoveVertically([[1, 2, 3], [8, 9, 4], [7, 6, 5]], 0, 0, 0))
+
+function Rotate2dArray(array2d) {
+    result = []
+    for (let index = array2d[0].length; index >= 0; index--) {
+        var verticalSlice = []
+        for (let index1 = 0; index1 < array2d.length; index1++) {
+            const element = array2d[index1][index];
+            verticalSlice.push(element)
+        }
+        result.push(verticalSlice)
+    }
+    return result
+}
+
+console.log(Rotate2dArray([[1, 2, 3], [8, 9, 4], [7, 6, 5]]))
 
 
 function AnagramDifference(firstWord, secondWord) {
